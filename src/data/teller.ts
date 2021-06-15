@@ -1,4 +1,4 @@
-import { Inventory, Catalog, Name } from './types'
+import { Inventory, Catalog, Name, Bonus, Item } from './types'
 
 export type TellerItem<C extends Catalog> = {
   name: Name<C>
@@ -66,7 +66,7 @@ const itemPositions = <C extends Catalog>(inventory: Inventory<C>) =>
 const itemBonus = <C extends Catalog>(
   catalog: C,
   itemPos: ItemPos<C>,
-  totals: TypeTotals<C>
+  totals: Record<string, number>
 ) => {
   const def = catalog[itemPos.type]
   const bonus = def.bonus
@@ -75,6 +75,10 @@ const itemBonus = <C extends Catalog>(
       return itemPos.sibling % bonus.groupSize ? 0 : bonus.points
     case 'solitaire':
       return totals[itemPos.type] === 1 ? bonus.points : 0
+    case 'animosity':
+      return bonus.unless.some((nemesis) => totals[nemesis] > 0)
+        ? 0
+        : bonus.points
     default:
       return 0
   }

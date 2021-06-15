@@ -1,13 +1,13 @@
 // -------------------- Definitions -----------------------------
 
-export type Item<N extends string> = {
-  name: N
+export type Item<K extends string, N extends string> = {
+  name: K
   points: number
   bonus?: Bonus<N>
 }
 
 export type Catalog<N extends string = string> = {
-  [key in N]: Item<key>
+  [key in N]: Item<key, N>
 }
 
 export type Name<C extends Catalog> = C extends Catalog<infer N> ? N : string
