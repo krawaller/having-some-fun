@@ -27,7 +27,6 @@ BasicTeller('we get correct item descriptors', () => {
   const result = teller(basicTestCatalog, ['regular1', 'regular2'])
   assert.equal(result.items[0], { name: 'regular1', points: 1, bonus: 0 })
   assert.equal(result.items[1], { name: 'regular2', points: 2, bonus: 0 })
-  assert.is(result.bonus, 0)
 })
 
 BasicTeller.run()

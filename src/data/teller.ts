@@ -69,7 +69,10 @@ const itemBonus = <C extends Catalog>(
   totals: TypeTotals<C>
 ) => {
   const def = catalog[itemPos.type]
-  switch (def.bonus?.type) {
+  const bonus = def.bonus
+  switch (bonus?.type) {
+    case 'group':
+      return itemPos.sibling % bonus.groupSize ? 0 : bonus.points
     default:
       return 0
   }
