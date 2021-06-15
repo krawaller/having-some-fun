@@ -20,15 +20,15 @@ const groupTestCatalog: Catalog<'triplet' | 'regular'> = {
   },
 }
 
-const GroupTeller = suite('Teller, group bonus items')
+const groupSuite = suite('Teller, group bonus items')
 
-GroupTeller('when less than required amount', () => {
+groupSuite('when less than required amount', () => {
   const result = teller(groupTestCatalog, ['triplet', 'regular', 'triplet'])
   assert.is(result.points, 4)
   assert.is(result.bonus, 0, 'no bonus is provided')
 })
 
-GroupTeller('when enough for 1 group', () => {
+groupSuite('when enough for 1 group', () => {
   const result = teller(groupTestCatalog, [
     'triplet',
     'triplet',
@@ -44,7 +44,7 @@ GroupTeller('when enough for 1 group', () => {
   )
 })
 
-GroupTeller('when enough for 2 groups', () => {
+groupSuite('when enough for 2 groups', () => {
   const result = teller(groupTestCatalog, [
     'triplet',
     'triplet',
@@ -68,4 +68,4 @@ GroupTeller('when enough for 2 groups', () => {
   )
 })
 
-GroupTeller.run()
+groupSuite.run()
