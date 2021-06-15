@@ -1,0 +1,35 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild ./src/app --bundle --minify --sourcemap --outfile=out/app.js",
+    "build:watch": "npm run build -- --watch",
+    "test:unit": "uvu -r esbuild-register",
+    "test:lint": "eslint",
+    "test:ts": "tsc --noEmit",
+    "test": "npm run test:ts & npm run test:lint & npm run test:unit",
+    "app": "serve out"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^11.2.7",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.7",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "esbuild": "^0.12.8",
+    "esbuild-register": "^2.6.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "linkedom": "^0.9.3",
+    "prettier": "^2.3.1",
+    "serve": "^12.0.0",
+    "typescript": "^4.3.2",
+    "uvu": "^0.5.1"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
