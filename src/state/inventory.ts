@@ -29,6 +29,12 @@ export const makeInventory = <C extends Catalog>(
   return { actions, inventoryAtom }
 }
 
+export type InventoryState = ReturnType<
+  ReturnType<typeof makeInventory>['inventoryAtom']['getValue']
+>
+
+export type InventoryActions = ReturnType<typeof makeActions>
+
 // Inner helper that creates a UI actions object for the given inventory atom.
 
 const makeActions = <C extends Catalog>(inventory: Atom<Name<C>[]>) => ({
