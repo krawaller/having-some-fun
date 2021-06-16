@@ -30,10 +30,9 @@ export type GroupBonus = BonusBase<'group'> & {
 // If only one of type
 export type SolitaireBonus = BonusBase<'solitaire'>
 
-// Multiplied by <multiplier>^(N-1) where <N> is pos in group of max size <height>
-export type StairBonus = BonusBase<'stair'> & {
-  multiplier: number
-  height: number
+// Item gets <bonu>*(N-1) where <N> is pos in siblings of max size <steps>
+export type LadderBonus = BonusBase<'ladder'> & {
+  steps: number // after this number of steps, the ladder will repeat
 }
 
 export type AnimosityBonus<N extends string> = BonusBase<'animosity'> & {
@@ -44,5 +43,5 @@ export type AnimosityBonus<N extends string> = BonusBase<'animosity'> & {
 export type Bonus<N extends string> =
   | GroupBonus
   | SolitaireBonus
-  | StairBonus
+  | LadderBonus
   | AnimosityBonus<N>

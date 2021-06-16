@@ -79,6 +79,8 @@ const itemBonus = <C extends Catalog>(
       return bonus.unless.some((nemesis) => totals[nemesis] > 0)
         ? 0
         : bonus.points
+    case 'ladder':
+      return ((itemPos.sibling - 1) % bonus.steps) * bonus.points
     default:
       return 0
   }
