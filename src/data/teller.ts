@@ -1,4 +1,5 @@
-import { Inventory, Catalog, Name, Bonus, Item } from './types'
+import { typeTotals } from './type-totals'
+import { Inventory, Catalog, Name } from './types'
 
 export type TellerItem<C extends Catalog> = {
   name: Name<C>
@@ -35,16 +36,6 @@ export const teller = <C extends Catalog>(
     { items: [], points: 0, bonus: 0 }
   )
 }
-
-// ------ Inner helper to get total count of items per type --------
-
-type TypeTotals<C extends Catalog> = Record<Name<C>, number>
-
-const typeTotals = <C extends Catalog>(inventory: Inventory<C>) =>
-  inventory.reduce((memo, item) => {
-    memo[item] = (memo[item] ?? 0) + 1
-    return memo
-  }, {} as unknown as TypeTotals<C>)
 
 // ------ Inner helper to calculate occurence index per type per item  --------
 

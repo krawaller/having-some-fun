@@ -29,6 +29,7 @@
     "uvu": "^0.5.1"
   },
   "dependencies": {
+    "klyva": "^0.8.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
