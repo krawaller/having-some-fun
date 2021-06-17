@@ -1,16 +1,17 @@
 import { useAtom } from 'klyva'
 import React, { useMemo } from 'react'
-import { Catalog } from '../data/types'
+import { Catalog, Meta } from '../data/types'
 import { makeInventory } from '../state/inventory'
 import { Pantry } from './pantry'
 import { List } from './list'
 import { Summary } from './summary'
 
-type AppProps = {
-  catalog: Catalog
+type AppProps<C extends Catalog> = {
+  catalog: C
+  meta: Meta<C>
 }
 
-export const App = (props: AppProps) => {
+export const App = <C extends Catalog>(props: AppProps<C>) => {
   const { catalog } = props
   const { actions, inventory } = useAppState(catalog)
   return (

@@ -10,6 +10,18 @@ export type Catalog<N extends string = string> = {
   [key in N]: Item<key, N>
 }
 
+export type Meta<C extends Catalog> = {
+  title: string
+  description: string
+  items: {
+    [key in Name<C>]: {
+      emoji: string
+      title: string
+      description: string
+    }
+  }
+}
+
 export type Name<C extends Catalog> = C extends Catalog<infer N> ? N : string
 
 export type Inventory<C extends Catalog> = Name<C>[]

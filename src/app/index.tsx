@@ -1,32 +1,32 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Catalog } from '../data/types'
+import { Catalog, Meta } from '../data/types'
 import { App } from './app'
 
-const catalog: Catalog<'regular' | 'pair' | 'snob' | 'hermit'> = {
-  regular: {
-    name: 'regular',
+const catalog: Catalog<'alien' | 'clown' | 'robot' | 'ghost'> = {
+  alien: {
+    name: 'alien',
     points: 1,
   },
-  snob: {
-    name: 'snob',
+  clown: {
+    name: 'clown',
     points: 1,
     bonus: {
       type: 'animosity',
       points: 5,
-      unless: ['regular'],
+      unless: ['alien'],
     },
   },
-  hermit: {
-    name: 'hermit',
+  robot: {
+    name: 'robot',
     points: 1,
     bonus: {
       type: 'solitaire',
       points: 5,
     },
   },
-  pair: {
-    name: 'pair',
+  ghost: {
+    name: 'ghost',
     points: 1,
     bonus: {
       type: 'group',
@@ -36,4 +36,34 @@ const catalog: Catalog<'regular' | 'pair' | 'snob' | 'hermit'> = {
   },
 }
 
-render(<App catalog={catalog} />, document.getElementById('app-root'))
+const meta: Meta<typeof catalog> = {
+  title: '',
+  description: '',
+  items: {
+    alien: {
+      description: '',
+      emoji: '👽',
+      title: 'alien',
+    },
+    clown: {
+      description: '',
+      emoji: '🤡',
+      title: 'clown',
+    },
+    robot: {
+      description: '',
+      emoji: '🤖',
+      title: 'robot',
+    },
+    ghost: {
+      description: '',
+      emoji: '👻',
+      title: 'ghost',
+    },
+  },
+}
+
+render(
+  <App catalog={catalog} meta={meta} />,
+  document.getElementById('app-root')
+)
