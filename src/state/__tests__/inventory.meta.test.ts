@@ -5,11 +5,9 @@ import { makeInventory } from '../inventory'
 
 const catalog: Catalog<'regular' | 'pair'> = {
   regular: {
-    name: 'regular',
     points: 1,
   },
   pair: {
-    name: 'pair',
     points: 1,
     bonus: {
       type: 'group',

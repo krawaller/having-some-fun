@@ -6,11 +6,9 @@ import { Catalog } from '../types'
 
 const solitaireTestCatalog: Catalog<'solitaire' | 'regular'> = {
   regular: {
-    name: 'regular',
     points: 1,
   },
   solitaire: {
-    name: 'solitaire',
     points: 1,
     bonus: {
       type: 'solitaire',

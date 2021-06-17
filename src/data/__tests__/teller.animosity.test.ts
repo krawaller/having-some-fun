@@ -8,19 +8,15 @@ const animosityTestCatalog: Catalog<
   'regular' | 'animosity' | 'nemesis1' | 'nemesis2'
 > = {
   regular: {
-    name: 'regular',
     points: 1,
   },
   nemesis1: {
-    name: 'nemesis1',
     points: 1,
   },
   nemesis2: {
-    name: 'nemesis2',
     points: 1,
   },
   animosity: {
-    name: 'animosity',
     points: 1,
     bonus: {
       type: 'animosity',

@@ -5,11 +5,9 @@ import { App } from './app'
 
 const catalog: Catalog<'alien' | 'clown' | 'robot' | 'ghost'> = {
   alien: {
-    name: 'alien',
     points: 1,
   },
   clown: {
-    name: 'clown',
     points: 1,
     bonus: {
       type: 'animosity',
@@ -18,7 +16,6 @@ const catalog: Catalog<'alien' | 'clown' | 'robot' | 'ghost'> = {
     },
   },
   robot: {
-    name: 'robot',
     points: 1,
     bonus: {
       type: 'solitaire',
@@ -26,7 +23,6 @@ const catalog: Catalog<'alien' | 'clown' | 'robot' | 'ghost'> = {
     },
   },
   ghost: {
-    name: 'ghost',
     points: 1,
     bonus: {
       type: 'group',

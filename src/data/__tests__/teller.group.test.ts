@@ -6,11 +6,9 @@ import { Catalog } from '../types'
 
 const groupTestCatalog: Catalog<'triplet' | 'regular'> = {
   regular: {
-    name: 'regular',
     points: 2,
   },
   triplet: {
-    name: 'triplet',
     points: 1,
     bonus: {
       type: 'group',

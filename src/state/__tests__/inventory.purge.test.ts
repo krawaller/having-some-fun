@@ -5,7 +5,6 @@ import { makeInventory } from '../inventory'
 
 const catalog: Catalog<'regular'> = {
   regular: {
-    name: 'regular',
     points: 1,
   },
 }

@@ -6,11 +6,9 @@ import { Catalog } from '../types'
 
 const basicTestCatalog: Catalog<'regular1' | 'regular2'> = {
   regular1: {
-    name: 'regular1',
     points: 1,
   },
   regular2: {
-    name: 'regular2',
     points: 2,
   },
 }

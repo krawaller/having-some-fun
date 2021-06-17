@@ -6,11 +6,9 @@ import { Catalog } from '../types'
 
 const ladderTestCatalog: Catalog<'ladder' | 'regular'> = {
   regular: {
-    name: 'regular',
     points: 1,
   },
   ladder: {
-    name: 'ladder',
     points: 1,
     bonus: {
       type: 'ladder',
