@@ -13,7 +13,7 @@ export const List = (props: ListProps) => {
       <h4>List of current inventory</h4>
       <ul>
         {state.score.items.map((item, idx) => (
-          <li key={item.name}>
+          <li key={idx}>
             {item.name} ({item.points} points, {item.bonus} bonus)
             <button onClick={() => actions.removeAt(idx)}>X</button>
           </li>
