@@ -9,7 +9,7 @@ export type Catalog<N extends string = string> = {
   [key in N]: Item<N>
 }
 
-export type Meta<C extends Catalog> = {
+export type Meta<C extends Catalog = Catalog<string>> = {
   title: string
   description: string
   items: {
