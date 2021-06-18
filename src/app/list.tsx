@@ -27,7 +27,10 @@ export const List = (props: ListProps) => {
                 <div title="points">{item.points}</div>
                 <div title="bonus">{item.bonus}</div>
               </Score>
-              <RemoveButton onClick={() => actions.removeAt(idx)}>
+              <RemoveButton
+                onClick={() => actions.removeAt(idx)}
+                title={`Remove ${item.name}`}
+              >
                 X
               </RemoveButton>
             </Item>
