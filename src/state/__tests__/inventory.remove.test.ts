@@ -28,6 +28,7 @@ invSuite('removing items', () => {
   ])
   actions.remove('pair')
   const result = inventoryAtom.getValue()
+  assert.is(result.inventory.length, 3)
   assert.equal(result.inventory, ['pair', 'regular', 'regular'])
 })
 

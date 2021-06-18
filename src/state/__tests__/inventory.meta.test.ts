@@ -21,9 +21,7 @@ const invSuite = suite('Stateful inventory, meta')
 
 invSuite('we get correct scores', () => {
   const { inventoryAtom } = makeInventory(catalog, ['pair', 'regular', 'pair'])
-  const {
-    score: { bonus, items, points },
-  } = inventoryAtom.getValue()
+  const { bonus, items, points } = inventoryAtom.getValue()
   assert.is(points, 3)
   assert.is(bonus, 3)
   assert.is(items[0].points, 1)
@@ -33,7 +31,7 @@ invSuite('we get correct scores', () => {
 invSuite('we get correct if statements', () => {
   const { inventoryAtom } = makeInventory(catalog, ['pair', 'regular'])
   const {
-    if: { pair, regular },
+    if: { pair },
   } = inventoryAtom.getValue()
   assert.is(pair.bonus, 3)
 })

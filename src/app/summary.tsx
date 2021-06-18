@@ -17,12 +17,12 @@ export const Summary = (props: SummaryProps) => {
         {Object.keys(catalog).map((item) => (
           <li key={item}>
             {item} ({state.count[item] ?? 0}) (
-            {state.score.items.reduce(
+            {state.items.reduce(
               (acc, i) => acc + (i.name === item ? i.points : 0),
               0
             )}{' '}
             points) (
-            {state.score.items.reduce(
+            {state.items.reduce(
               (acc, i) => acc + (i.name === item ? i.bonus : 0),
               0
             )}

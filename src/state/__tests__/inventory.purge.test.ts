@@ -19,7 +19,7 @@ invSuite('purging items', () => {
   actions.purge()
   const result = inventoryAtom.getValue()
   assert.equal(result.inventory, [])
-  assert.is(result.score.points, 0)
+  assert.is(result.points, 0)
 })
 
 invSuite.run()

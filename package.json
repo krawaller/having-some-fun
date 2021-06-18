@@ -13,6 +13,7 @@
     "@testing-library/react": "^11.2.7",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
+    "@types/react-transition-group": "^4.4.1",
     "@types/styled-components": "^5.1.10",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
@@ -33,6 +34,7 @@
     "klyva": "^0.8.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-transition-group": "^4.4.2",
     "styled-components": "^5.3.0"
   }
 }

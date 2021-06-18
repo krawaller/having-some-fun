@@ -1,4 +1,9 @@
 import React from 'react'
+import {
+  Transition,
+  TransitionGroup,
+  TransitionStatus,
+} from 'react-transition-group'
 import styled from 'styled-components'
 import { Meta } from '../data/types'
 import { InventoryActions, InventoryState } from '../state/inventory'
@@ -14,16 +19,24 @@ export const List = (props: ListProps) => {
   return (
     <>
       <Container>
-        {state.score.items.map((item, idx) => (
-          <Item key={idx}>
-            <Icon>{meta.items[item.name].emoji}</Icon>
-            <Score>
-              <div>{item.points}</div>
-              <div>{item.bonus}</div>
-            </Score>
-            <RemoveButton onClick={() => actions.removeAt(idx)}>X</RemoveButton>
-          </Item>
-        ))}
+        <TransitionGroup>
+          {state.items.map((item, idx) => (
+            <Transition key={item.key} timeout={300}>
+              {(state) => (
+                <Item state={state}>
+                  <Icon>{meta.items[item.name].emoji}</Icon>
+                  <Score>
+                    <div>{item.points}</div>
+                    <div>{item.bonus}</div>
+                  </Score>
+                  <RemoveButton onClick={() => actions.removeAt(idx)}>
+                    X
+                  </RemoveButton>
+                </Item>
+              )}
+            </Transition>
+          ))}
+        </TransitionGroup>
       </Container>
       <button onClick={() => actions.purge()}>Clear</button>
     </>
@@ -33,9 +46,10 @@ export const List = (props: ListProps) => {
 const Container = styled.ul`
   padding-left: 0;
   padding: 12px;
+  display: grid;
 `
 
-const Item = styled.li`
+const Item = styled.li<{ state: TransitionStatus }>`
   --item-size: 80px;
   --item-radius: 6px;
   list-style-type: none;
@@ -47,9 +61,15 @@ const Item = styled.li`
   position: relative;
   height: 80px;
   width: 80px;
+  transition: opacity 0.2s ease;
   &:hover button {
     transform: scale(1, 1);
   }
+  ${({ state }) =>
+    state === 'exiting' &&
+    `
+    opacity: 0;
+  `}
 `
 
 const Icon = styled.div`
