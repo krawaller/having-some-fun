@@ -8,5 +8,4 @@ export const setupDOM = () => {
   global.window = window
   global.document = window.document
   global.navigator = window.navigator
-  global.getComputedStyle = window.getComputedStyle
 }

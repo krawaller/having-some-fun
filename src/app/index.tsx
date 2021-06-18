@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Catalog, Meta } from '../data/types'
-import { App } from './app'
+import { GamePoints } from './gamepoints'
 
 const catalog: Catalog<'alien' | 'clown' | 'robot' | 'ghost'> = {
   alien: {
@@ -60,6 +60,6 @@ const meta: Meta<typeof catalog> = {
 }
 
 render(
-  <App catalog={catalog} meta={meta} />,
+  <GamePoints catalog={catalog} meta={meta} />,
   document.getElementById('app-root')
 )

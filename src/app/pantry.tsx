@@ -16,7 +16,7 @@ export const Pantry = <C extends Catalog>(props: PantryProps<C>) => {
     <Container>
       {all.map((item) => (
         <Purchaser key={item}>
-          <button onClick={() => actions.add(item)}>
+          <button onClick={() => actions.add(item)} title={`Acquire ${item}`}>
             {meta.items[item].emoji}
           </button>
         </Purchaser>

@@ -17,33 +17,30 @@ type ListProps = {
 export const List = (props: ListProps) => {
   const { state, actions, meta } = props
   return (
-    <Container>
-      <TransitionGroup>
-        {state.items.map((item, idx) => (
-          <Transition key={item.key} timeout={300}>
-            {(state) => (
-              <Item state={state}>
-                <Icon>{meta.items[item.name].emoji}</Icon>
-                <Score>
-                  <div>{item.points}</div>
-                  <div>{item.bonus}</div>
-                </Score>
-                <RemoveButton onClick={() => actions.removeAt(idx)}>
-                  X
-                </RemoveButton>
-              </Item>
-            )}
-          </Transition>
-        ))}
-      </TransitionGroup>
+    <Container title="backpack" component="ul">
+      {state.items.map((item, idx) => (
+        <Transition key={item.key} timeout={{ enter: 0, exit: 300 }}>
+          {(state) => (
+            <Item state={state} title={`Acquired ${item.name}`}>
+              <Icon>{meta.items[item.name].emoji}</Icon>
+              <Score>
+                <div title="points">{item.points}</div>
+                <div title="bonus">{item.bonus}</div>
+              </Score>
+              <RemoveButton onClick={() => actions.removeAt(idx)}>
+                X
+              </RemoveButton>
+            </Item>
+          )}
+        </Transition>
+      ))}
     </Container>
   )
 }
 
-const Container = styled.ul`
+const Container = styled(TransitionGroup)`
   padding-left: 0;
   padding: 12px;
-  display: grid;
 `
 
 const Item = styled.li<{ state: TransitionStatus }>`
@@ -63,7 +60,7 @@ const Item = styled.li<{ state: TransitionStatus }>`
     transform: scale(1, 1);
   }
   ${({ state }) =>
-    state === 'exiting' &&
+    (state === 'exiting' || state === 'entering') &&
     `
     transform: scale(0, 0);
     opacity: 0;

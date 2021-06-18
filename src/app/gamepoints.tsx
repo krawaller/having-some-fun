@@ -7,12 +7,12 @@ import { List } from './list'
 import { Summary } from './summary'
 import { Layout } from './layout'
 
-type AppProps<C extends Catalog> = {
+type GamePointsProps<C extends Catalog> = {
   catalog: C
   meta: Meta<C>
 }
 
-export const App = <C extends Catalog>(props: AppProps<C>) => {
+export const GamePoints = <C extends Catalog>(props: GamePointsProps<C>) => {
   const { catalog, meta } = props
   const { actions, inventory } = useAppState(catalog)
   const main = (
