@@ -31,6 +31,7 @@ const Container = styled.ul`
   justify-content: space-around;
   margin-bottom: calc(var(--purchaser-size) * 0.6);
   padding-left: 0;
+  margin-top: 0;
 `
 
 const Purchaser = styled.li`
@@ -61,7 +62,7 @@ const Purchaser = styled.li`
       content: ' ';
       position: absolute;
       border: calc(var(--purchaser-size) / 2) solid transparent;
-      transition: border-top-width 0.3s ease;
+      transition: border-top-width 0.2s ease;
       border-bottom-width: 0;
       border-top-width: calc(
         var(--purchaser-size) * 0.25

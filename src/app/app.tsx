@@ -35,7 +35,12 @@ export const App = <C extends Catalog>(props: AppProps<C>) => {
         <List actions={actions} state={inventory} meta={meta} />
       </Left>
       <Right>
-        <Summary actions={actions} state={inventory} catalog={catalog} />
+        <Summary
+          actions={actions}
+          state={inventory}
+          catalog={catalog}
+          meta={meta}
+        />
       </Right>
     </Container>
   )

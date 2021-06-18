@@ -61,13 +61,14 @@ const Item = styled.li<{ state: TransitionStatus }>`
   position: relative;
   height: 80px;
   width: 80px;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   &:hover button {
     transform: scale(1, 1);
   }
   ${({ state }) =>
     state === 'exiting' &&
     `
+    transform: scale(0, 0);
     opacity: 0;
   `}
 `
