@@ -26,9 +26,10 @@ export const Pantry = <C extends Catalog>(props: PantryProps<C>) => {
 }
 
 const Container = styled.ul`
+  --purchaser-size: 60px;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 40px;
+  margin-bottom: calc(var(--purchaser-size) * 0.6);
   padding-left: 0;
 `
 
@@ -39,26 +40,32 @@ const Purchaser = styled.li`
     cursor: pointer;
     user-select: none;
     background-color: green;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 40px;
+    width: var(--purchaser-size);
+    height: var(--purchaser-size);
+    line-height: var(--purchaser-size);
+    font-size: calc(var(--purchaser-size) * 0.6);
     text-align: center;
-    transition: font-size 0.3s ease;
+    transition: font-size 0.1s ease;
     &:hover {
-      font-size: 50px;
       &:after {
-        border-top-width: 40px;
+        border-top-width: calc(
+          var(--purchaser-size) * 0.65
+        ); /* Active arrow height */
       }
+    }
+    &:active {
+      font-size: calc(var(--purchaser-size) * 0.8);
     }
     &:after {
       display: block;
       content: ' ';
       position: absolute;
-      border: 30px solid transparent;
+      border: calc(var(--purchaser-size) / 2) solid transparent;
       transition: border-top-width 0.3s ease;
       border-bottom-width: 0;
-      border-top-width: 20px;
+      border-top-width: calc(
+        var(--purchaser-size) * 0.25
+      ); /* Idle arrow height */
       border-top-color: green;
     }
   }

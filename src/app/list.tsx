@@ -36,9 +36,11 @@ const Container = styled.ul`
 `
 
 const Item = styled.li`
+  --item-size: 80px;
+  --item-radius: 6px;
   list-style-type: none;
   background-color: gray;
-  border-radius: 6px;
+  border-radius: var(--item-radius);
   margin: 6px;
   display: inline-flex;
   flex-direction: column;
@@ -55,20 +57,20 @@ const Icon = styled.div`
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  font-size: 40px;
+  font-size: calc(var(--item-size) / 2);
 `
 
 const Score = styled.div`
   display: flex;
-  height: 20px;
+  height: calc(var(--item-size) / 4);
   text-align: center;
   & :first-child {
-    border-bottom-left-radius: 6px;
+    border-bottom-left-radius: var(--item-radius);
     background-color: lightgray;
     flex-grow: 1;
   }
   & :last-child {
-    border-bottom-right-radius: 6px;
+    border-bottom-right-radius: var(--item-radius);
     flex-grow: 1;
     background-color: black;
     color: white;
@@ -76,21 +78,22 @@ const Score = styled.div`
 `
 
 const RemoveButton = styled.button`
+  --remove-button-size: calc(var(--item-size) / 4);
   all: unset;
   cursor: pointer;
   font-family: monospace;
   user-select: none;
   transition: transform 0.3s ease;
   transform: scale(0, 0);
-  height: 20px;
-  width: 20px;
-  border-radius: 10px;
+  height: var(--remove-button-size);
+  width: var(--remove-button-size);
+  border-radius: var(--item-size);
   background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: calc(var(--remove-button-size) * -0.35);
+  right: calc(var(--remove-button-size) * -0.35);
 `
