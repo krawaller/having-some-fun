@@ -42,6 +42,7 @@ export const Summary = (props: SummaryProps) => {
           )
         })}
       </ul>
+      <button onClick={() => actions.purge()}>Clear</button>
     </>
   )
 }

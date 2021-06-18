@@ -17,29 +17,26 @@ type ListProps = {
 export const List = (props: ListProps) => {
   const { state, actions, meta } = props
   return (
-    <>
-      <Container>
-        <TransitionGroup>
-          {state.items.map((item, idx) => (
-            <Transition key={item.key} timeout={300}>
-              {(state) => (
-                <Item state={state}>
-                  <Icon>{meta.items[item.name].emoji}</Icon>
-                  <Score>
-                    <div>{item.points}</div>
-                    <div>{item.bonus}</div>
-                  </Score>
-                  <RemoveButton onClick={() => actions.removeAt(idx)}>
-                    X
-                  </RemoveButton>
-                </Item>
-              )}
-            </Transition>
-          ))}
-        </TransitionGroup>
-      </Container>
-      <button onClick={() => actions.purge()}>Clear</button>
-    </>
+    <Container>
+      <TransitionGroup>
+        {state.items.map((item, idx) => (
+          <Transition key={item.key} timeout={300}>
+            {(state) => (
+              <Item state={state}>
+                <Icon>{meta.items[item.name].emoji}</Icon>
+                <Score>
+                  <div>{item.points}</div>
+                  <div>{item.bonus}</div>
+                </Score>
+                <RemoveButton onClick={() => actions.removeAt(idx)}>
+                  X
+                </RemoveButton>
+              </Item>
+            )}
+          </Transition>
+        ))}
+      </TransitionGroup>
+    </Container>
   )
 }
 
