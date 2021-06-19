@@ -26,7 +26,7 @@ const Main = styled.div`
 `
 
 const Side = styled.div`
-  width: 400px;
+  width: 300px;
   flex-shrink: 0;
   background-color: seashell;
 `

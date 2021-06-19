@@ -12,28 +12,33 @@ type SummaryProps = {
 
 export const Summary = (props: SummaryProps) => {
   const { state, actions, catalog, meta } = props
+  const { items, count, points, bonus, inventory } = state
   return (
     <>
       <Container>
         {Object.keys(catalog).map((item) => {
-          const points = state.items.reduce(
+          const points = items.reduce(
             (acc, i) => acc + (i.name === item ? i.points : 0),
             0
           )
-          const bonus = state.items.reduce(
+          const bonus = items.reduce(
             (acc, i) => acc + (i.name === item ? i.bonus : 0),
             0
           )
           return (
             <Line key={item}>
-              <Icon>{meta.items[item].emoji}</Icon> ⋅ {state.count[item] ?? 0}
-              <AddButton onClick={() => actions.add(item)}>+</AddButton>
-              <RemoveButton
-                onClick={() => actions.remove(item)}
-                disabled={!state.count[item]}
-              >
-                x
-              </RemoveButton>
+              <Count>
+                <Icon>{meta.items[item].emoji}</Icon> ⋅ {count[item] ?? 0}
+              </Count>
+              <div>
+                <AddButton onClick={() => actions.add(item)}>+</AddButton>{' '}
+                <RemoveButton
+                  onClick={() => actions.remove(item)}
+                  disabled={!count[item]}
+                >
+                  x
+                </RemoveButton>
+              </div>
               <Score>
                 <div>{points}</div>
                 <div>{bonus}</div>
@@ -41,8 +46,21 @@ export const Summary = (props: SummaryProps) => {
             </Line>
           )
         })}
+        <Line>
+          <span>Total</span>
+          <button
+            title="Remove all"
+            disabled={!inventory.length}
+            onClick={() => actions.purge()}
+          >
+            Clear
+          </button>
+          <Score>
+            <div>{points}</div>
+            <div>{bonus}</div>
+          </Score>
+        </Line>
       </Container>
-      <button onClick={() => actions.purge()}>Clear</button>
     </>
   )
 }
@@ -62,6 +80,11 @@ const Line = styled.li`
   justify-content: space-between;
   position: relative;
   overflow: hidden;
+`
+
+const Count = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 const Icon = styled.span`
