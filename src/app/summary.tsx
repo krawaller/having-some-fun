@@ -14,7 +14,7 @@ export const Summary = (props: SummaryProps) => {
   const { state, actions, catalog, meta } = props
   return (
     <>
-      <ul>
+      <Container>
         {Object.keys(catalog).map((item) => {
           const points = state.items.reduce(
             (acc, i) => acc + (i.name === item ? i.points : 0),
@@ -41,11 +41,15 @@ export const Summary = (props: SummaryProps) => {
             </Line>
           )
         })}
-      </ul>
+      </Container>
       <button onClick={() => actions.purge()}>Clear</button>
     </>
   )
 }
+
+const Container = styled.ul`
+  margin-top: 0;
+`
 
 const Line = styled.li`
   list-style-type: none;

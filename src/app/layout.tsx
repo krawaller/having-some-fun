@@ -18,6 +18,7 @@ export const Layout = (props: LayoutProps) => {
 
 const Container = styled.div`
   display: flex;
+  height: 100vh;
 `
 
 const Main = styled.div`
@@ -27,4 +28,5 @@ const Main = styled.div`
 const Side = styled.div`
   width: 400px;
   flex-shrink: 0;
+  background-color: seashell;
 `
