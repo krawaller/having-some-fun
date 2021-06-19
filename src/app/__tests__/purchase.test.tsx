@@ -6,15 +6,15 @@ import { catalog, meta } from './simple-test-data'
 import { GamePoints } from '../gamepoints'
 import { domTestSuite } from './dom-test-suite'
 
-const CompSuite = domTestSuite('the GamePoints component, purchasing')
+const GPSuite = domTestSuite('the GamePoints component, purchasing')
 
-CompSuite('we start with nothing', () => {
+GPSuite('we start with nothing', () => {
   const wrapper = render(<GamePoints catalog={catalog} meta={meta} />)
   const list = wrapper.getByTitle('backpack')
   assert.is(list.querySelectorAll('li').length, 0)
 })
 
-CompSuite('we can purchase items', async () => {
+GPSuite('we can purchase items', async () => {
   const wrapper = render(<GamePoints catalog={catalog} meta={meta} />)
 
   const alienBtn = wrapper.getByTitle('Acquire alien')
@@ -29,4 +29,4 @@ CompSuite('we can purchase items', async () => {
   assert.is(clowns.length, 2)
 })
 
-CompSuite.run()
+GPSuite.run()
