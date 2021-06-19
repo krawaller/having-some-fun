@@ -1,6 +1,10 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
+/*
+A helper component to house the layout styling and logic
+*/
+
 type LayoutProps = {
   main: ReactElement
   side: ReactElement

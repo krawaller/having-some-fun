@@ -1,7 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Catalog, Meta, Name } from '../data/types'
-import { InventoryActions } from '../state/inventory'
+import { Catalog, Meta, Name } from '../data'
+import { InventoryActions } from '../state'
+
+/*
+The Pantry has a button per type, letting the player gain an item of that type. This
+corresponds to the left-hand side of the sketch.
+*/
 
 type PantryProps<C extends Catalog> = {
   catalog: C

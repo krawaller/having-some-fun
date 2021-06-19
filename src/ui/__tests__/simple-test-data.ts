@@ -1,4 +1,4 @@
-import { Catalog, Meta } from '../../data/types'
+import { Catalog, Meta } from '../../data'
 
 export const catalog: Catalog<'alien' | 'clown'> = {
   alien: {

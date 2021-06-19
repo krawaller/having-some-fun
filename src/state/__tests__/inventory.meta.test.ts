@@ -1,6 +1,6 @@
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
-import { Catalog } from '../../data/types'
+import { Catalog } from '../../data'
 import { makeInventory } from '../inventory'
 
 const catalog: Catalog<'regular' | 'pair'> = {

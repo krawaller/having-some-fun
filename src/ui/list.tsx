@@ -5,8 +5,13 @@ import {
   TransitionStatus,
 } from 'react-transition-group'
 import styled from 'styled-components'
-import { Meta } from '../data/types'
-import { InventoryActions, InventoryState } from '../state/inventory'
+import { Meta } from '../data'
+import { InventoryActions, InventoryState } from '../state'
+
+/*
+The List shows all individual items, and how much each one provides in points and bonus.
+(not featured in original sketch)
+*/
 
 type ListProps = {
   state: InventoryState

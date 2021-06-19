@@ -1,11 +1,16 @@
 import { useAtom } from 'klyva'
 import React, { useMemo } from 'react'
-import { Catalog, Meta } from '../data/types'
-import { makeInventory } from '../state/inventory'
+import { Catalog, Meta } from '../data'
+import { makeInventory } from '../state'
 import { Pantry } from './pantry'
 import { List } from './list'
 import { Summary } from './summary'
 import { Layout } from './layout'
+
+/*
+The root component of the app, and thus the one we should unit test 
+(which will then taste much like integration testing)
+*/
 
 type GamePointsProps<C extends Catalog> = {
   catalog: C

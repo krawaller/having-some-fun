@@ -1,7 +1,5 @@
 import { atom, Atom } from 'klyva'
-import { teller, TellerResult } from '../data/teller'
-import { typeTotals } from '../data/type-totals'
-import { Catalog, Name } from '../data/types'
+import { teller, TellerResult, typeTotals, Catalog, Name } from '../data'
 
 // We need to be able to identify a specific item in our inventory, so
 // we track each item along with a unique id

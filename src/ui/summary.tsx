@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Catalog, Meta } from '../data/types'
-import { InventoryActions, InventoryState } from '../state/inventory'
+import { Catalog, Meta } from '../data'
+import { InventoryActions, InventoryState } from '../state'
+
+/*
+The Summary component is the right-hand side of the app, called "Player Items" in the original sketch.
+It shows point and bonus totals per item type as requested, and also have type inc/dec buttons to
+add/remove an item of that particular type.
+*/
 
 type SummaryProps = {
   state: InventoryState
