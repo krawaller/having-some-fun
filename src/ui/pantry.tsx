@@ -41,6 +41,7 @@ const Container = styled.ul`
 
 const Purchaser = styled.li`
   list-style-type: none;
+  position: relative;
   & > button {
     all: unset;
     cursor: pointer;
