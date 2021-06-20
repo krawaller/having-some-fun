@@ -17,7 +17,9 @@ GPSquite('we can delete purchased items', async () => {
   await wrapper.findByTitle('Acquired alien')
   const deleteBtn = await wrapper.findByTitle('Remove alien')
   Simulate.click(deleteBtn)
-  waitFor(() => assert.is(wrapper.queryAllByTitle('Acquired alien').length, 0))
+  await waitFor(() =>
+    assert.is(wrapper.queryAllByTitle('Acquired alien').length, 0)
+  )
 })
 
 GPSquite.run()

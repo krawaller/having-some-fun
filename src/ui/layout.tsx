@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 /*
 A helper component to house the layout styling and logic. It will toggle between horisontal and
@@ -59,7 +59,14 @@ const Side = styled.div<{ showSidebar: boolean }>`
   @media (max-width: ${breakPoint - 1}px) {
     overflow: hidden;
     transition: max-height 0.3s ease;
-    max-height: ${(ctx) => (ctx.showSidebar ? '100vh' : 'var(--toggler-size)')};
+    ${(ctx) =>
+      ctx.showSidebar
+        ? css`
+            max-height: 100vh;
+          `
+        : css`
+            max-height: var(--toggler-size);
+          `};
   }
   @media (min-width: ${breakPoint}px) {
     width: 300px;

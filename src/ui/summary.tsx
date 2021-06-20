@@ -38,8 +38,14 @@ export const Summary = (props: SummaryProps) => {
                 <Icon>{meta.items[item].emoji}</Icon> ⋅ {count[item] ?? 0}
               </Count>
               <div>
-                <AddButton onClick={() => actions.add(item)}>+</AddButton>{' '}
+                <AddButton
+                  title={`Increase ${item} count`}
+                  onClick={() => actions.add(item)}
+                >
+                  +
+                </AddButton>{' '}
                 <RemoveButton
+                  title={`Decrease ${item} count`}
                   onClick={() => actions.remove(item)}
                   disabled={!count[item]}
                 >
