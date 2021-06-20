@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Catalog, Meta } from '../data'
 import { InventoryActions, InventoryState } from '../state'
+import { Score } from './score'
 
 /*
 The Summary component is the right-hand side of the app, called "Player Items" in the original sketch.
@@ -45,10 +46,9 @@ export const Summary = (props: SummaryProps) => {
                   x
                 </RemoveButton>
               </div>
-              <Score>
-                <div>{points}</div>
-                <div>{bonus}</div>
-              </Score>
+              <ScoreBox>
+                <Score points={points} bonus={bonus} />
+              </ScoreBox>
             </Line>
           )
         })}
@@ -61,10 +61,9 @@ export const Summary = (props: SummaryProps) => {
           >
             Clear
           </button>
-          <Score>
-            <div>{points}</div>
-            <div>{bonus}</div>
-          </Score>
+          <ScoreBox>
+            <Score points={points} bonus={bonus} />
+          </ScoreBox>
         </Line>
       </Container>
     </>
@@ -123,27 +122,7 @@ const RemoveButton = styled(CircleButton)`
   color: white;
 `
 
-const Score = styled.div`
-  display: flex;
+const ScoreBox = styled.div`
   width: 120px;
-  height: 100%;
-  text-align: center;
-  line-height: 100%;
-  align-items: stretch;
-  & > * {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  & :first-child {
-    background-color: lightgray;
-    flex-grow: 1;
-    flex-shrink: 0;
-  }
-  & :last-child {
-    flex-grow: 1;
-    flex-shrink: 0;
-    background-color: black;
-    color: white;
-  }
+  align-self: stretch;
 `

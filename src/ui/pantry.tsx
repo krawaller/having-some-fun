@@ -18,19 +18,22 @@ export const Pantry = <C extends Catalog>(props: PantryProps<C>) => {
   const { catalog, actions, meta } = props
   const all = Object.keys(catalog) as Name<C>[]
   return (
-    <Container>
+    <Shelf>
       {all.map((item) => (
-        <Purchaser key={item}>
-          <button onClick={() => actions.add(item)} title={`Acquire ${item}`}>
+        <ProductContainer key={item}>
+          <PurchaseButton
+            onClick={() => actions.add(item)}
+            title={`Acquire ${item}`}
+          >
             {meta.items[item].emoji}
-          </button>
-        </Purchaser>
+          </PurchaseButton>
+        </ProductContainer>
       ))}
-    </Container>
+    </Shelf>
   )
 }
 
-const Container = styled.ul`
+const Shelf = styled.ul`
   --purchaser-size: 60px;
   display: flex;
   justify-content: space-around;
@@ -39,41 +42,42 @@ const Container = styled.ul`
   margin-top: 0;
 `
 
-const Purchaser = styled.li`
+const ProductContainer = styled.li`
   list-style-type: none;
   position: relative;
-  & > button {
-    all: unset;
-    cursor: pointer;
-    user-select: none;
-    background-color: green;
-    width: var(--purchaser-size);
-    height: var(--purchaser-size);
-    line-height: var(--purchaser-size);
-    font-size: calc(var(--purchaser-size) * 0.6);
-    text-align: center;
-    transition: font-size 0.1s ease;
-    &:hover {
-      &:after {
-        border-top-width: calc(
-          var(--purchaser-size) * 0.65
-        ); /* Active arrow height */
-      }
-    }
-    &:active {
-      font-size: calc(var(--purchaser-size) * 0.8);
-    }
+`
+
+const PurchaseButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  user-select: none;
+  background-color: green;
+  width: var(--purchaser-size);
+  height: var(--purchaser-size);
+  line-height: var(--purchaser-size);
+  font-size: calc(var(--purchaser-size) * 0.6);
+  text-align: center;
+  transition: font-size 0.1s ease;
+  &:hover {
     &:after {
-      display: block;
-      content: ' ';
-      position: absolute;
-      border: calc(var(--purchaser-size) / 2) solid transparent;
-      transition: border-top-width 0.2s ease;
-      border-bottom-width: 0;
       border-top-width: calc(
-        var(--purchaser-size) * 0.25
-      ); /* Idle arrow height */
-      border-top-color: green;
+        var(--purchaser-size) * 0.65
+      ); /* Active arrow height */
     }
+  }
+  &:active {
+    font-size: calc(var(--purchaser-size) * 0.8);
+  }
+  &:after {
+    display: block;
+    content: ' ';
+    position: absolute;
+    border: calc(var(--purchaser-size) / 2) solid transparent;
+    transition: border-top-width 0.2s ease;
+    border-bottom-width: 0;
+    border-top-width: calc(
+      var(--purchaser-size) * 0.25
+    ); /* Idle arrow height */
+    border-top-color: green;
   }
 `

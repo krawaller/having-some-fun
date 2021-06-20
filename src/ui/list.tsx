@@ -7,6 +7,7 @@ import {
 import styled from 'styled-components'
 import { Meta } from '../data'
 import { InventoryActions, InventoryState } from '../state'
+import { Score } from './score'
 
 /*
 The List shows all individual items, and how much each one provides in points and bonus.
@@ -28,10 +29,9 @@ export const List = (props: ListProps) => {
           {(state) => (
             <Item state={state} title={`Acquired ${item.name}`}>
               <Icon>{meta.items[item.name].emoji}</Icon>
-              <Score>
-                <div title="points">{item.points}</div>
-                <div title="bonus">{item.bonus}</div>
-              </Score>
+              <ScoreBox>
+                <Score points={item.points} bonus={item.bonus} />
+              </ScoreBox>
               <RemoveButton
                 onClick={() => actions.removeAt(idx)}
                 title={`Remove ${item.name}`}
@@ -83,21 +83,9 @@ const Icon = styled.div`
   font-size: calc(var(--item-size) / 2);
 `
 
-const Score = styled.div`
-  display: flex;
+const ScoreBox = styled.div`
   height: calc(var(--item-size) / 4);
-  text-align: center;
-  & :first-child {
-    border-bottom-left-radius: var(--item-radius);
-    background-color: lightgray;
-    flex-grow: 1;
-  }
-  & :last-child {
-    border-bottom-right-radius: var(--item-radius);
-    flex-grow: 1;
-    background-color: black;
-    color: white;
-  }
+  position: relative;
 `
 
 const RemoveButton = styled.button`
