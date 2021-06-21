@@ -72,6 +72,9 @@ const Hint = styled.div<{ left: boolean }>`
 `
 
 const ProductContainer = styled.li`
+  --gradient-start: #e66465;
+  --gradient-stop: #9198e5;
+  background: linear-gradient(var(--gradient-start), var(--gradient-stop));
   list-style-type: none;
   position: relative;
   &:hover > :first-child {
@@ -83,7 +86,6 @@ const PurchaseButton = styled.button`
   all: unset;
   cursor: pointer;
   user-select: none;
-  background-color: green;
   width: var(--purchaser-size);
   height: var(--purchaser-size);
   line-height: var(--purchaser-size);
@@ -110,6 +112,6 @@ const PurchaseButton = styled.button`
     border-top-width: calc(
       var(--purchaser-size) * 0.25
     ); /* Idle arrow height */
-    border-top-color: green;
+    border-top-color: var(--gradient-stop);
   }
 `

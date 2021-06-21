@@ -55,7 +55,7 @@ const Item = styled.li<{ state: TransitionStatus }>`
   --item-size: 80px;
   --item-radius: 6px;
   list-style-type: none;
-  background-color: gray;
+  background: linear-gradient(45deg, black, silver);
   border-radius: var(--item-radius);
   margin: 6px;
   display: inline-flex;

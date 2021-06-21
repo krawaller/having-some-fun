@@ -52,7 +52,8 @@ const Main = styled.div`
 
 const Side = styled.div<{ showSidebar: boolean }>`
   --toggler-size: 40px;
-  --side-background-color: sandybrown;
+  --side-gradient-start: sandybrown;
+  --side-gradient-stop: #f1c8a6;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -80,7 +81,7 @@ const SideToggler = styled.button`
   flex-shrink: 0;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background-color: var(--side-background-color);
+  background-color: var(--side-gradient-start);
   margin-right: 10px;
   height: var(--toggler-size);
   width: var(--toggler-size);
@@ -94,5 +95,8 @@ const SideToggler = styled.button`
 const SideContent = styled.div`
   flex-grow: 1;
   padding: 6px;
-  background-color: var(--side-background-color);
+  background: linear-gradient(
+    var(--side-gradient-start),
+    var(--side-gradient-stop)
+  );
 `
