@@ -22,7 +22,12 @@ export const GamePoints = <C extends Catalog>(props: GamePointsProps<C>) => {
   const { actions, inventory } = useAppState(catalog)
   const main = (
     <>
-      <Pantry actions={actions} catalog={catalog} meta={meta} />
+      <Pantry
+        actions={actions}
+        catalog={catalog}
+        state={inventory}
+        meta={meta}
+      />
       <List actions={actions} state={inventory} meta={meta} />
     </>
   )

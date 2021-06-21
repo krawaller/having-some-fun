@@ -4,14 +4,21 @@ import styled from 'styled-components'
 type ScoreProps = {
   points: number
   bonus: number
+  signed?: boolean
 }
 
 export const Score = (props: ScoreProps) => {
-  const { bonus, points } = props
+  const { bonus, points, signed } = props
   return (
     <ScoreLayout>
-      <div title="points">{points}</div>
-      <div title="bonus">{bonus}</div>
+      <div title="points">
+        {points >= 0 && signed ? '+' : ''}
+        {points}
+      </div>
+      <div title="bonus">
+        {bonus >= 0 && signed ? '+' : ''}
+        {bonus}
+      </div>
     </ScoreLayout>
   )
 }

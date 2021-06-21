@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Catalog, Meta, Name } from '../data'
-import { InventoryActions } from '../state'
+import { InventoryActions, InventoryState } from '../state'
+import { Score } from './score'
 
 /*
 The Pantry has a button per type, letting the player gain an item of that type. This
@@ -12,15 +13,23 @@ type PantryProps<C extends Catalog> = {
   catalog: C
   meta: Meta<C>
   actions: InventoryActions
+  state: InventoryState
 }
 
 export const Pantry = <C extends Catalog>(props: PantryProps<C>) => {
-  const { catalog, actions, meta } = props
+  const { catalog, actions, meta, state } = props
   const all = Object.keys(catalog) as Name<C>[]
   return (
     <Shelf>
-      {all.map((item) => (
+      {all.map((item, n) => (
         <ProductContainer key={item}>
+          <Hint left={n >= all.length / 2}>
+            <Score
+              points={state.if[item].points - state.points}
+              bonus={state.if[item].bonus - state.bonus}
+              signed
+            />
+          </Hint>
           <PurchaseButton
             onClick={() => actions.add(item)}
             title={`Acquire ${item}`}
@@ -42,9 +51,32 @@ const Shelf = styled.ul`
   margin-top: 0;
 `
 
+const Hint = styled.div<{ left: boolean }>`
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0; /* set to 1 by hover in parent */
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  ${(p) =>
+    p.left
+      ? css`
+          left: -70%;
+        `
+      : css`
+          right: -70%;
+        `}
+`
+
 const ProductContainer = styled.li`
   list-style-type: none;
   position: relative;
+  &:hover > :first-child {
+    opacity: 1;
+  }
 `
 
 const PurchaseButton = styled.button`
